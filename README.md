@@ -17,3 +17,7 @@ Here are the features:
 9 - Once you are done and all routes have been tested, deploy on render. Here is the link. Reach out if you have any questions.
 10 - Once deployed, test all routes using Postman.
 
+npm init -y
+npm i prisma express bcrypt jsonwebtoken nodemon uuid
+npx prisma init
+added file structure
