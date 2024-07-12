@@ -6,5 +6,5 @@ app.listen(PORT, () => {
   console.log(`I am listening on port number ${PORT}`);
 });
 
-const userRoutes = require("../src/routes/userRoutes");
+const userRoutes = require("../src/routes/UserRoutes");
 app.use("/api/user", userRoutes);
