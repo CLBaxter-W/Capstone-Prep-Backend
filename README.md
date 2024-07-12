@@ -7,7 +7,7 @@ The backend is broken down into the following features. Each feature is a new br
 
 Here are the features:
 1 - check - Create a new repository on Github and add all the team members.
-2 - Build the skeleton of the backend using npm and add the dependencies.
+2 - check - Build the skeleton of the backend using npm and add the dependencies.
 3 - Build a user table using Prisma. This table should contain a UUID that is the primary key, a first name, last name, email that is unique, and a password. All fields should be not null.
 4 - Create the register endpoint. A user will enter an email, first name, last name, and password. The password will be encrypted using bcrypt and the end point will return the users information and a  JSON web token that is good for one hour. Create a folder for routes, controllers, and queries. Here is an example. Test this in Postman
 5 - Create a login endpoint. The user will enter their email and password, use bcrypt compare for the password and return the users information and a JSON web token. Test this in Postman.
@@ -21,3 +21,7 @@ npm init -y
 npm i prisma express bcrypt jsonwebtoken nodemon uuid
 npx prisma init
 added file structure
+
+-- adding schema
+npm i  @prisma/client  
+npx prisma migrate dev
