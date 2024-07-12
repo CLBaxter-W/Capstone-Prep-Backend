@@ -6,7 +6,7 @@ Backend:
 The backend is broken down into the following features. Each feature is a new branch. When you start a feature, create a new branch, test the code using Postman, and finally merge your code. Then the next driver will pull down the code from Github, create a new branch, and start the next feature.
 
 Here are the features:
-1 - Create a new repository on Github and add all the team members.
+1 - check - Create a new repository on Github and add all the team members.
 2 - Build the skeleton of the backend using npm and add the dependencies.
 3 - Build a user table using Prisma. This table should contain a UUID that is the primary key, a first name, last name, email that is unique, and a password. All fields should be not null.
 4 - Create the register endpoint. A user will enter an email, first name, last name, and password. The password will be encrypted using bcrypt and the end point will return the users information and a  JSON web token that is good for one hour. Create a folder for routes, controllers, and queries. Here is an example. Test this in Postman
