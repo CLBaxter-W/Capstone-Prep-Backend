@@ -80,15 +80,29 @@ const findUserByTokenQuery = async (id) => {
   }
 };
 
-//CB - #6 - endpoint to get all users
+const deleteUserQuery = async (id) => {
+  try {
+    const user = await prisma.user.delete({
+      where: {
+        id,
+      },
+    });
+
+    if (!user) {
+      return res.status(404).send("User not found.");
+    }
+
+    return user;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const getAllUsersQuery = async () => {
   try {
     console.log("getAllUsersQuery");
     const users = await prisma.user.findMany({
-      where: {
-
-
-      },
+      where: {},
     });
 
     return { users };
@@ -103,4 +117,5 @@ module.exports = {
   findUserByTokenQuery,
   loginQuery,
   getAllUsersQuery,
+  deleteUserQuery,
 };

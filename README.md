@@ -15,7 +15,9 @@ Here are the features:
 6 - check - Create an endpoint to get all the users. This is a protected route, use middleware to make sure the user has a valid JSON web token. If they do return all the users, if not return an unauthorized error. Test this in Postman (Are you seeing a pattern?).
 
 7 - Create a delete endpoint for a user. This is another protected route, the same as above.
+
 8 - Create an update endpoint for a user. This should take in the email, first name, last name, and password, then update the user's information. Don’t forget to use bcrypt for the password. This is also a protected route
+
 9 - Once you are done and all routes have been tested, deploy on render. Here is the link. Reach out if you have any questions.
 10 - Once deployed, test all routes using Postman.
 

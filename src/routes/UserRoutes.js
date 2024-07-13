@@ -4,6 +4,7 @@ const {
   findUserByToken,
   login,
   getAllUsers,
+  deleteUser
 } = require("../controllers/UserControllers");
 
 const isLoggedIn = async (req, res, next) => {
@@ -18,6 +19,8 @@ const isLoggedIn = async (req, res, next) => {
 
 route.post("/register", register);
 route.post("/login", login);
+route.delete("/delete/:id",isLoggedIn, deleteUser);
 route.get("/users", isLoggedIn, getAllUsers);
+
 
 module.exports = route;

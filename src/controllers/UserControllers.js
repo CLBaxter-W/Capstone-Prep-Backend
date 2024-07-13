@@ -3,6 +3,7 @@ const {
   loginQuery,
   findUserByTokenQuery,
   getAllUsersQuery,
+  deleteUserQuery,
 } = require("../queries/UserQueries");
 
 const { jwt } = require("../shared/shared");
@@ -32,7 +33,6 @@ const findUserByToken = async (token) => {
 
     id = payload.id;
     console.log("id from find user with token", id);
-
   } catch (ex) {
     const error = Error("Not Authorized to access this page");
     error.status = 401;
@@ -42,11 +42,16 @@ const findUserByToken = async (token) => {
   return userLoggedIn;
 };
 
-
 const getAllUsers = async (req, res, next) => {
   console.log("getAllUsers");
   const returnUsers = await getAllUsersQuery();
   res.send(returnUsers);
+};
+
+const deleteUser = async (req, res, next) => {
+  console.log(req.params);
+  const returnInfo = await deleteUserQuery(req.params.id);
+  res.send(returnInfo);
 };
 
 module.exports = {
@@ -54,4 +59,5 @@ module.exports = {
   findUserByToken,
   login,
   getAllUsers,
+  deleteUser,
 };
