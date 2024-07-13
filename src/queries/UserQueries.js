@@ -64,17 +64,37 @@ const loginQuery = async ({ email, password }) => {
   }
 };
 
-const findUserByTokenQuery = async (req, res, next) => {
-  console.log(req.user?.id);
+const findUserByTokenQuery = async (id) => {
+  console.log(id);
   try {
     let userTokenId;
-    if (req.user?.id)
+    if (id)
       userTokenId = await prisma.user.findUnique({
-        where: { id: req.user.id },
+        where: { id: id },
       });
-    res.send(userTokenId);
+    return userTokenId;
   } catch (error) {
-    next(error);
+    //next(error);
+
+    console.log(error);
+  }
+};
+
+//CB - #6 - endpoint to get all users
+const getAllUsersQuery = async () => {
+  try {
+    console.log("getAllUsersQuery");
+    const users = await prisma.user.findMany({
+      where: {
+
+
+      },
+    });
+
+    return { users };
+  } catch (error) {
+    // next(error);
+    console.log(error);
   }
 };
 
@@ -82,4 +102,5 @@ module.exports = {
   registerQuery,
   findUserByTokenQuery,
   loginQuery,
+  getAllUsersQuery,
 };
