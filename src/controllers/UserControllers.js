@@ -4,6 +4,7 @@ const {
   findUserByTokenQuery,
   getAllUsersQuery,
   deleteUserQuery,
+  updateUserQuery
 } = require("../queries/UserQueries");
 
 const { jwt } = require("../shared/shared");
@@ -54,10 +55,23 @@ const deleteUser = async (req, res, next) => {
   res.send(returnInfo);
 };
 
+const updateUser = async (req, res, next) => {
+  console.log(req.params);
+  const returnInfo = await updateUserQuery(
+    req.params.id,
+    req.body.email,
+    req.body.firstname,
+    req.body.lastname,
+    req.body.password
+  );
+  res.send(returnInfo);
+};
+
 module.exports = {
   register,
   findUserByToken,
   login,
   getAllUsers,
   deleteUser,
+  updateUser,
 };
