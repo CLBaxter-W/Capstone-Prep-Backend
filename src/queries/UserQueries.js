@@ -112,10 +112,31 @@ const getAllUsersQuery = async () => {
   }
 };
 
+const updateUserQuery = async (id, email, firstname, lastname, password) => {
+  const hashPassword = await bcrypt.hash(password, 10);
+  try {
+    const updateUser = await prisma.user.update({
+      where: {
+        id,
+      },
+      data: {
+        email,
+        password: hashPassword,
+        firstname,
+        lastname,
+      },
+    });
+    return updateUser;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 module.exports = {
   registerQuery,
   findUserByTokenQuery,
   loginQuery,
   getAllUsersQuery,
   deleteUserQuery,
+  updateUserQuery
 };
