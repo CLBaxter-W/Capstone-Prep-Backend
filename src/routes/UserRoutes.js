@@ -1,4 +1,4 @@
-const { route } = require("../shared/shared");
+const { route, app } = require("../shared/shared");
 const {
   register,
   findUserByToken,
@@ -7,6 +7,14 @@ const {
   deleteUser,
   updateUser,
 } = require("../controllers/UserControllers");
+
+const cors = require("cors");
+const corsOptions = {
+  origin: "http://capstone-prep-backend-vjwd.onrender.com/",
+  optionsSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
 
 const isLoggedIn = async (req, res, next) => {
   try {
@@ -17,7 +25,9 @@ const isLoggedIn = async (req, res, next) => {
   }
 };
 
-route.post("/register", register);
+app.get("/register", cors(corsOptions), (req, res) => {
+  route.post("/register", register);
+});
 
 route.post("/login", login);
 
