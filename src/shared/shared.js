@@ -1,10 +1,13 @@
-
 // Create the backend application layer
 const express = require("express");
+
 const app = express();
+
+
+
 app.use(express.json());
 
-// add the encryption 
+// add the encryption
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
