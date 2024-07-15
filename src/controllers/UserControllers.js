@@ -4,7 +4,7 @@ const {
   findUserByTokenQuery,
   getAllUsersQuery,
   deleteUserQuery,
-  updateUserQuery
+  updateUserQuery,
 } = require("../queries/UserQueries");
 
 const { jwt } = require("../shared/shared");
@@ -50,9 +50,17 @@ const getAllUsers = async (req, res, next) => {
 };
 
 const deleteUser = async (req, res, next) => {
-  console.log(req.params);
-  const returnInfo = await deleteUserQuery(req.params.id);
-  res.send(returnInfo);
+
+  if (req.user.id === req.params.id) {
+    //TODO - if we have time make the error handling here
+    // more elegant
+    const error = Error("Very sorry, unable to delete yourself");
+    error.status = 401;
+    res.send(error);
+  } else {
+    const returnInfo = await deleteUserQuery(req.params.id);
+    res.send(returnInfo);
+  }
 };
 
 const updateUser = async (req, res, next) => {

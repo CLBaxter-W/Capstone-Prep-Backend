@@ -82,7 +82,11 @@ const findUserByTokenQuery = async (id) => {
 
 const deleteUserQuery = async (id) => {
   try {
+
+
+    
     const user = await prisma.user.delete({
+
       where: {
         id,
       },

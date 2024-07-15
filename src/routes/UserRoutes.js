@@ -5,12 +5,11 @@ const {
   login,
   getAllUsers,
   deleteUser,
-  updateUser
+  updateUser,
 } = require("../controllers/UserControllers");
 
 const isLoggedIn = async (req, res, next) => {
   try {
-
     req.user = await findUserByToken(req.headers.authorization);
     next();
   } catch (error) {
@@ -19,10 +18,13 @@ const isLoggedIn = async (req, res, next) => {
 };
 
 route.post("/register", register);
-route.post("/login", login);
-route.delete("/delete/:id",isLoggedIn, deleteUser);
-route.get("/users", isLoggedIn, getAllUsers);
-route.put("/users/:id", isLoggedIn, updateUser)
 
+route.post("/login", login);
+
+route.delete("/delete/:id", isLoggedIn, deleteUser);
+
+route.get("/users", isLoggedIn, getAllUsers);
+
+route.put("/users/:id", isLoggedIn, updateUser);
 
 module.exports = route;
