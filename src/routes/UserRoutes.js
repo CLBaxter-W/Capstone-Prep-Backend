@@ -1,6 +1,4 @@
-const cors = require("cors");
-
-const { route, app  } = require("../shared/shared");
+const { route, app } = require("../shared/shared");
 
 const {
   register,
@@ -19,9 +17,6 @@ const isLoggedIn = async (req, res, next) => {
     next(error);
   }
 };
-
-app.use(cors());
-app.options('*', cors());
 
 route.post("/register", register);
 
