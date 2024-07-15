@@ -18,8 +18,8 @@ Here are the features:
 
 8 - check - Create an update endpoint for a user. This should take in the email, first name, last name, and password, then update the user's information. Don’t forget to use bcrypt for the password. This is also a protected route
 
-9 - Once you are done and all routes have been tested, deploy on render. Here is the link. Reach out if you have any questions.
-10 - Once deployed, test all routes using Postman.
+9 - check - Once you are done and all routes have been tested, deploy on render. Here is the link. Reach out if you have any questions.
+10 - checke - Once deployed, test all routes using Postman.
 
 npm init -y
 npm i prisma express bcrypt jsonwebtoken nodemon uuid
