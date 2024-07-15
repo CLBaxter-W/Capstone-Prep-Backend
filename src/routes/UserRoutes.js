@@ -21,6 +21,7 @@ const isLoggedIn = async (req, res, next) => {
 };
 
 app.use(cors());
+app.options('*', cors());
 
 route.post("/register", register);
 

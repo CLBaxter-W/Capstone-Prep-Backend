@@ -3,6 +3,7 @@ const cors = require("cors");
 const PORT = process.env.PORT || 3000;
 
 app.use(cors());
+app.options("*", cors());
 
 app.listen(PORT, () => {
   console.log(`I am listening on port number ${PORT}`);
