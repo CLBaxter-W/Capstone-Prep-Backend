@@ -6,9 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server:dev": "nodemon server/index.js",
+    "server2:dev": "node server/index.js",
     "build": "webpack",
     "build:dev": "npm run build -- --watch --mode=development",
-    "start:dev": "nodemon server/index.js --ignore dist/ --ignore src/ & npm run build:dev",
+    "start:dev": "nodemon server/index.js --ignore dist/ & npm run build:dev",
     "seed": "node server/seed.js"
   },
   "keywords": [],
@@ -20,10 +21,10 @@
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
     "nodemon": "^3.1.4",
-    "prisma": "^5.16.2",
     "uuid": "^10.0.0"
   },
   "devDependencies": {
+    "prisma": "^5.16.2",
     "webpack": "^5.93.0",
     "webpack-cli": "^5.1.4"
   }
