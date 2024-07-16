@@ -26,4 +26,4 @@ app.listen(PORT, () => {
 });
 
 const userRoutes = require("../src/routes/UserRoutes");
-app.use("/api/user", userRoutes);
+app.use("/api/user", cors(), userRoutes);
