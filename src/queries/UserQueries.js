@@ -16,7 +16,6 @@ const registerQuery = async ({ email, password, firstname, lastname }) => {
       lastname,
     },
   });
-
   console.log(hashPassword);
 
   const token = jwt.sign(
