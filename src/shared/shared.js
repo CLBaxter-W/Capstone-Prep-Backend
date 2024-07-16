@@ -2,15 +2,7 @@
 const express = require("express");
 
 const app = express();
-
-
 app.use(express.json());
-
-const cors = require("cors");
-app.use(cors());
-
-// for Pre-flight when needed
-app.options("*", cors());
 
 // add the encryption
 const bcrypt = require("bcrypt");
@@ -30,5 +22,4 @@ module.exports = {
   jwt,
   route,
   prisma,
-  cors
 };
