@@ -1,5 +1,7 @@
 const { route, app, cors } = require("../shared/shared");
 
+const request = require('request');
+
 const {
   register,
   findUserByToken,

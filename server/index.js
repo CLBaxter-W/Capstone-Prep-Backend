@@ -1,4 +1,6 @@
 const { app } = require("../src/shared/shared");
+cors = require('./cors');
+app.use(cors());
 
 const PORT = process.env.PORT || 3000;
 
