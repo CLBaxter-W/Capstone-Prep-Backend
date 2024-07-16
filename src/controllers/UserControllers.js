@@ -50,7 +50,6 @@ const getAllUsers = async (req, res, next) => {
 };
 
 const deleteUser = async (req, res, next) => {
-
   if (req.user.id === req.params.id) {
     //TODO - if we have time make the error handling here
     // more elegant
