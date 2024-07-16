@@ -3,13 +3,27 @@ const { app } = require("../src/shared/shared");
 const PORT = process.env.PORT || 3000;
 
 // Add Access Control Allow Origin headers
-//test this
-app.use((req, res, next) => {
+//CB test this
+// app.use((req, res, next) => {
+//   res.setHeader("Access-Control-Allow-Origin", "*");
+//   res.header(
+//     "Access-Control-Allow-Headers",
+//     "Origin, X-Requested-With, Content-Type, Accept"
+//   );
+//   next();
+// });
+
+app.use(function (req, res, next) {
   res.setHeader("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, OPTIONS, PUT, PATCH, DELETE"
   );
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "X-Requested-With,content-type, accept"
+  );
+  res.setHeader("Access-Control-Allow-Credentials", true);
   next();
 });
 
