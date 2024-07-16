@@ -18,7 +18,23 @@ const isLoggedIn = async (req, res, next) => {
   }
 };
 
-route.post("/register", cors(), register);
+// try this here - or should this route
+
+route.use(function (req, res, next) {
+  //app.use(function (req, res, next) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, OPTIONS, PUT, PATCH, DELETE"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "X-Requested-With,content-type"
+  );
+  next();
+});
+
+route.post("/register", register);
 
 route.post("/login", login);
 
