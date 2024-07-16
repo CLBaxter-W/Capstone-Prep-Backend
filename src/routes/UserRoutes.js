@@ -20,10 +20,6 @@ const isLoggedIn = async (req, res, next) => {
   }
 };
 
-route.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  next();
-});
 
 route.post("/register", register);
 
