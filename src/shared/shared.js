@@ -43,5 +43,5 @@ module.exports = {
   jwt,
   route,
   prisma,
-  
+  cors
 };
