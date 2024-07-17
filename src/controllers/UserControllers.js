@@ -11,6 +11,7 @@ const { jwt } = require("../shared/shared");
 
 const register = async (req, res, next) => {
   const returnInfo = await registerQuery(req.body);
+  console.log(returnInfo);
   res.send(returnInfo);
 };
 
@@ -25,8 +26,8 @@ const findUserByToken = async (token) => {
 
   try {
     const tokenSplit = token?.split(" ")[1];
-    console.log("tokenSplit", tokenSplit);
-    console.log(process.env.WEB_TOKEN);
+    // console.log("tokenSplit", tokenSplit);
+    // console.log(process.env.WEB_TOKEN);
 
     const payload = await jwt.verify(tokenSplit, process.env.WEB_TOKEN);
 

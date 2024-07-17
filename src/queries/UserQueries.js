@@ -1,33 +1,38 @@
 const { bcrypt, prisma, jwt } = require("../shared/shared");
 
 const registerQuery = async ({ email, password, firstname, lastname }) => {
-  console.log(email);
-  console.log(password);
-  console.log(firstname);
-  console.log(lastname);
+  //   console.log(email);
+  //   console.log(password);
+  //   console.log(firstname);
+  //   console.log(lastname);
 
   const hashPassword = await bcrypt.hash(password, 10);
+  try {
+    const registerUser = await prisma.user.create({
+      data: {
+        email,
+        password: hashPassword,
+        firstname,
+        lastname,
+      },
+    });
+    // console.log(hashPassword);
 
-  const registerUser = await prisma.user.create({
-    data: {
-      email,
-      password: hashPassword,
-      firstname,
-      lastname,
-    },
-  });
-  console.log(hashPassword);
-
-  const token = jwt.sign(
-    {
-      id: registerUser.id,
-    },
-    process.env.WEB_TOKEN,
-    {
-      expiresIn: "1h",
-    }
-  );
-  return { token, registerUser };
+    const token = jwt.sign(
+      {
+        id: registerUser.id,
+      },
+      process.env.WEB_TOKEN,
+      {
+        expiresIn: "1h",
+      }
+    );
+    // console.log(registerUser);
+    return { token, registerUser };
+  } catch (error) {
+    // console.log(error);
+    return error;
+  }
 };
 
 const loginQuery = async ({ email, password }) => {
@@ -59,7 +64,7 @@ const loginQuery = async ({ email, password }) => {
     return { token, user };
   } catch (error) {
     // next(error);
-    console.log(error);
+    return error;
   }
 };
 
@@ -75,17 +80,13 @@ const findUserByTokenQuery = async (id) => {
   } catch (error) {
     //next(error);
 
-    console.log(error);
+    return error;
   }
 };
 
 const deleteUserQuery = async (id) => {
   try {
-
-
-    
     const user = await prisma.user.delete({
-
       where: {
         id,
       },
@@ -97,7 +98,7 @@ const deleteUserQuery = async (id) => {
 
     return user;
   } catch (error) {
-    console.log(error);
+    return error;
   }
 };
 
@@ -111,7 +112,7 @@ const getAllUsersQuery = async () => {
     return { users };
   } catch (error) {
     // next(error);
-    console.log(error);
+    return error;
   }
 };
 
@@ -124,14 +125,14 @@ const updateUserQuery = async (id, email, firstname, lastname, password) => {
       },
       data: {
         email,
-        password: hashPassword,
+        // password: hashPassword,
         firstname,
         lastname,
       },
     });
     return updateUser;
   } catch (error) {
-    console.log(error);
+    return error;
   }
 };
 
@@ -141,5 +142,5 @@ module.exports = {
   loginQuery,
   getAllUsersQuery,
   deleteUserQuery,
-  updateUserQuery
+  updateUserQuery,
 };
